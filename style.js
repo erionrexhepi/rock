@@ -6,6 +6,8 @@ const rules = {
     paper: "rock",
     scissors: "paper"
 }
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice () {
     const choices = ["rock","paper","scissors"];
@@ -13,29 +15,67 @@ function getComputerChoice () {
     return choices[randomIndex]
 }
 function getHumanChoice () {
-    const input = prompt("enter your pick")
+    const input = prompt("enter your pick").toLowerCase();
     return input ;
     
 }
-function playround () {
-    const human = getHumanChoice;
-    const computer = getComputerChoice;
 
-    console.log("Human:", human);
-    console.log("Computer:", computer);
+function playround (humanChoice, computerChoice) {
 
-   if (human === computer) {
-    alert("It's a tie!");
-    return;
+
+       
+
+       if (rules[human] === computer) {
+            alert("Human wins!");
+            humanScore++;
+            
+        }
+        else if (rules[computer] === human) {
+        alert("Computer wins!");
+            computerScore++;
+            }
+       
+
+        else  {
+         alert("It's a tie!");
+            
+        }
+}
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {  // play 5 rounds
+        const humanChoice = getHumanChoice();
+        const computerChoice = getComputerChoice();
+
+        const winner = playRound(humanChoice, computerChoice);
+
+        if (winner === "human") humanScore++;
+        else if (winner === "computer") computerScore++;
+        // tie does not affect score
+    }
+console.log(`Final Scores -> Human: ${humanScore}, Computer: ${computerScore}`);
+
+    if (humanScore > computerScore) {
+        console.log("Human is the overall winner!");
+    } else if (computerScore > humanScore) {
+        console.log("Computer is the overall winner!");
+    } else {
+        console.log("The game ends in a tie!");
+    }
 }
 
-if (rules[human] === computer) {
-    alert("Human wins!");
-    return;
-}
+// Step 5: Start the game
+playGame();
 
-alert("Computer wins!");
-}
+
+
+
+
+
+
+
 
 
 
