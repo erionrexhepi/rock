@@ -9,41 +9,35 @@ const rules = {
 let humanScore = 0;
 let computerScore = 0;
 
-function getComputerChoice () {
-    const choices = ["rock","paper","scissors"];
-    const randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex]
-}
 function getHumanChoice () {
     const input = prompt("enter your pick").toLowerCase();
     return input ;
     
 }
+function getComputerChoice () {
+    const choices = ["rock","paper","scissors"];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex]
+}
 
-function playround (humanChoice, computerChoice) {
-
-
-       
-
-       if (rules[human] === computer) {
-            alert("Human wins!");
-            humanScore++;
-            
-        }
-        else if (rules[computer] === human) {
-        alert("Computer wins!");
-            computerScore++;
-            }
-       
-
-        else  {
-         alert("It's a tie!");
-            
-        }
+function playRound (humanChoice, computerChoice) {
+        console.log("Human:", humanChoice);
+        console.log("Computer:", computerChoice);
+        if (humanChoice === computerChoice) {
+        alert("It's a tie!");
+        return "tie";
+    } 
+    else if (rules[humanChoice] === computerChoice) {
+        alert("Human wins this round!");
+        return "human";
+    } 
+    else {
+        alert("Computer wins this round!");
+        return "computer";
+    }
 }
 function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
+    
 
     for (let i = 0; i < 5; i++) {  // play 5 rounds
         const humanChoice = getHumanChoice();
